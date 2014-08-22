@@ -24,6 +24,13 @@ class Dialplan
      */
     protected $lines = array();
 
+    /**
+     * Make a new Dialplan requiring the first line in the
+     * Dialplan.
+     *
+     * @param string $contextName
+     * @param LineInterface $line
+     */
     public function __construct($contextName, LineInterface $line)
     {
         $this->contextName = $contextName;
@@ -32,6 +39,7 @@ class Dialplan
 
     /**
      * Get the Context Name for this Dialplan
+     *
      * @return string
      */
     public function getName()
@@ -59,6 +67,12 @@ class Dialplan
         return $this->lines;
     }
 
+    /**
+     * Turn the complete dialplan into a string, including
+     * newline characters.
+     *
+     * @return string
+     */
     public function toString()
     {
         $string = "[{$this->contextName}]\n";
