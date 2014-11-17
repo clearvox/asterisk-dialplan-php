@@ -1,5 +1,5 @@
 # Asterisk Dialplan PHP
-![Build Status](https://travis-ci.org/clearvox/asterisk-dialplan-php.svg?branch=master)
+[![Build Status](https://travis-ci.org/clearvox/asterisk-dialplan-php.svg?branch=master)](https://travis-ci.org/clearvox/asterisk-dialplan-php)
 
 Simplify your Dialplan building in a clean OOP, tested way.
 
