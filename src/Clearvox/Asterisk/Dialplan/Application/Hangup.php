@@ -5,11 +5,22 @@ class Hangup implements ApplicationInterface
 {
     use StandardApplicationTrait;
 
+    /**
+     * @var string|null
+     */
     protected $causecode;
 
     public function __construct($causecode = null)
     {
         $this->causecode = $causecode;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getCausecode()
+    {
+        return $this->causecode;
     }
 
     /**

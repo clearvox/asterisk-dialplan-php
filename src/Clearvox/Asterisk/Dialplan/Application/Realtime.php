@@ -3,10 +3,19 @@ namespace Clearvox\Asterisk\Dialplan\Application;
 
 class Realtime implements ApplicationInterface
 {
+    /**
+     * @var string|null
+     */
     protected $context;
 
+    /**
+     * @var string|null
+     */
     protected $family;
 
+    /**
+     * @var array
+     */
     protected $options;
 
     public function __construct($context = null, $family = null, $options = array())
@@ -14,6 +23,30 @@ class Realtime implements ApplicationInterface
         $this->context = $context;
         $this->family  = $family;
         $this->options = $options;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getFamily()
+    {
+        return $this->family;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
     }
 
     /**

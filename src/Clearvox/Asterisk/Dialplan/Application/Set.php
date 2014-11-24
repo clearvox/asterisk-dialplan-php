@@ -56,6 +56,22 @@ class Set implements ApplicationInterface
     }
 
     /**
+     * @return string
+     */
+    public function getPreparedName()
+    {
+        return $this->preparedName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
      * Should return the name of the application
      *
      * @return string

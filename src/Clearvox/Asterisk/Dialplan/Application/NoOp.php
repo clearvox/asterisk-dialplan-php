@@ -24,6 +24,14 @@ class NoOp implements ApplicationInterface
     }
 
     /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
      * Should return the name of the application
      *
      * @return string

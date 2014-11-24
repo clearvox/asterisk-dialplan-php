@@ -57,6 +57,16 @@ class Dial implements ApplicationInterface
     }
 
     /**
+     * Get all targets for this Dial.
+     *
+     * @return array
+     */
+    public function getTargets()
+    {
+        return array_merge(array($this->initialTarget), $this->targets);
+    }
+
+    /**
      * Specify an option flag for this Dial. Requires the timeout
      * to be set.
      *
@@ -72,6 +82,16 @@ class Dial implements ApplicationInterface
 
         $this->dialOptions[] = $dialOption;
         return $this;
+    }
+
+    /**
+     * Get all dial options.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->dialOptions;
     }
 
     /**

@@ -60,5 +60,32 @@ class DialTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('SIP/100,30,,/url', $dial->getData());
     }
+
+    public function testGetTargets()
+    {
+        $dial = new Dial('SIP', 100);
+        $dial
+            ->addTarget('SIP', 101)
+            ->addTarget('SIP', 102);
+
+        $expectedTargets = array(
+            array('SIP', 100),
+            array('SIP', 101),
+            array('SIP', 102)
+        );
+
+        $this->assertEquals($expectedTargets, $dial->getTargets());
+    }
+
+    public function testGetOptions()
+    {
+        $dial = new Dial('SIP', 100, 30);
+        $dial
+            ->addOption('o')
+            ->addOption('t')
+            ->addOption('T');
+
+        $this->assertEquals(array('o', 't', 'T'), $dial->getOptions());
+    }
 }
  

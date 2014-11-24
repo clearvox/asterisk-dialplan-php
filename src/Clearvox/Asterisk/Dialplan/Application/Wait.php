@@ -5,11 +5,22 @@ class Wait implements ApplicationInterface
 {
     use StandardApplicationTrait;
 
+    /**
+     * @var int
+     */
     protected $seconds;
 
     public function __construct($seconds)
     {
         $this->seconds = $seconds;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSeconds()
+    {
+        return $this->seconds;
     }
 
     /**

@@ -5,10 +5,19 @@ class Go implements ApplicationInterface
 {
     use StandardApplicationTrait;
 
+    /**
+     * @var int
+     */
     protected $priority;
 
+    /**
+     * @var string
+     */
     protected $extensions;
 
+    /**
+     * @var string
+     */
     protected $context;
 
     /**
@@ -23,6 +32,30 @@ class Go implements ApplicationInterface
         $this->priority   = $priority;
         $this->extensions = $extensions;
         $this->context    = $context;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtensions()
+    {
+        return $this->extensions;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 
     /**

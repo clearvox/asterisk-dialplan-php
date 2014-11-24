@@ -28,6 +28,30 @@ class GotoIf implements ApplicationInterface
     }
 
     /**
+     * @return string
+     */
+    public function getCondition()
+    {
+        return $this->condition;
+    }
+
+    /**
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     */
+    public function getFalse()
+    {
+        return $this->false;
+    }
+
+    /**
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     */
+    public function getTrue()
+    {
+        return $this->true;
+    }
+
+    /**
      * Should return the name of the application
      *
      * @return string

@@ -45,6 +45,14 @@ class UserEvent implements ApplicationInterface
     }
 
     /**
+     * @return string
+     */
+    public function getEventName()
+    {
+        return $this->eventName;
+    }
+
+    /**
      * Add a new Key:Value pair to the Event body.
      *
      * @param string $key
@@ -55,6 +63,14 @@ class UserEvent implements ApplicationInterface
     {
         $this->body[$key] = $value;
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 
     /**
