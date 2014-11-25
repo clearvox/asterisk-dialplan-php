@@ -85,4 +85,29 @@ class Realtime implements ApplicationInterface
     {
         return $this->getName() . '/' . $this->getData();
     }
+
+    /**
+     * Turns this application into an Array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'context' => $this->context,
+            'family'  => $this->family,
+            'options' => $this->options
+        );
+    }
+
+    /**
+     * Turns this Application into a json representation
+     *
+     * @param int $options
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        return json_encode($this->toArray(), $options);
+    }
 }

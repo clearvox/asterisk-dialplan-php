@@ -38,7 +38,7 @@ class Dial implements ApplicationInterface
         $this->timeout = $timeout;
         $this->url     = $url;
 
-        if (is_null($timeout) && ! is_null($url)) {
+        if (is_null($timeout) && !is_null($url)) {
             throw new \InvalidArgumentException("Requires a Timeout to add a URL");
         }
     }
@@ -139,5 +139,31 @@ class Dial implements ApplicationInterface
         }
 
         return $data;
+    }
+
+    /**
+     * Turns this application into an Array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'targets' => $this->getTargets(),
+            'timeout' => $this->timeout,
+            'url'     => $this->url,
+            'options' => $this->dialOptions
+        );
+    }
+
+    /**
+     * Turns this Application into a json representation
+     *
+     * @param int $options
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        return json_encode($this->toArray(), $options);
     }
 }
