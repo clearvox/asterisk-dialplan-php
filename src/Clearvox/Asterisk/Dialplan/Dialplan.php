@@ -31,7 +31,7 @@ class Dialplan
      * @param string $contextName
      * @param LineInterface $line
      */
-    public function __construct($contextName, LineInterface $line)
+    public function __construct($contextName, LineInterface $line = null)
     {
         $this->contextName = $contextName;
         $this->lines[] = $line;
