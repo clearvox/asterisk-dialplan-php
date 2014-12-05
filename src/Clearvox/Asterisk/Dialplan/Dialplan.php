@@ -34,7 +34,10 @@ class Dialplan
     public function __construct($contextName, LineInterface $line = null)
     {
         $this->contextName = $contextName;
-        $this->lines[] = $line;
+
+        if (!is_null($line)) {
+            $this->lines[] = $line;
+        }
     }
 
     /**
