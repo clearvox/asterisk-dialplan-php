@@ -1,0 +1,73 @@
+<?php
+
+use Clearvox\Asterisk\Dialplan\Application\ChanSpy;
+
+class ChanSpyTest extends PHPUnit_Framework_TestCase
+{
+    /**
+     * @var ChanSpy
+     */
+    public $chanSpy;
+
+    public function setUp()
+    {
+        $this->chanSpy = new ChanSpy();
+    }
+
+    public function testGetNameIsCorrect()
+    {
+        $this->assertEquals('ChanSpy', $this->chanSpy->getName());
+    }
+
+    public function testSetGetChanPrefix()
+    {
+        $this->chanSpy->setChanPrefix('Agent');
+        $this->assertEquals('Agent', $this->chanSpy->getChanPrefix());
+
+        $chanSpy = new ChanSpy('Agent');
+        $this->assertEquals('Agent', $chanSpy->getChanPrefix());
+    }
+
+    public function testSetGetOptions()
+    {
+        $options = ['b', 'c(5)', 'e(100:101)'];
+        $this->chanSpy->setOptions($options);
+        $this->assertEquals($options, $this->chanSpy->getOptions());
+
+        $chanSpy = new ChanSpy('', $options);
+        $this->assertEquals($options, $chanSpy->getOptions());
+    }
+
+    public function testGetDataOnlyPrefix()
+    {
+        $this->chanSpy->setChanPrefix('Agent');
+        $this->assertEquals('Agent', $this->chanSpy->getData());
+    }
+
+    public function testGetDataOnlyOptions()
+    {
+        $options = ['b', 'c(5)', 'e(100:101)'];
+        $this->chanSpy->setOptions($options);
+        $this->assertEquals(',bc(5)e(100:101)', $this->chanSpy->getData());
+    }
+
+    public function testGetDataBoth()
+    {
+        $this->chanSpy
+            ->setChanPrefix('Agent')
+            ->setOptions(['b', 'c(5)', 'e(100:101)']);
+
+        $this->assertEquals('Agent,bc(5)e(100:101)', $this->chanSpy->getData());
+    }
+
+    public function testString()
+    {
+        $this->assertEquals('ChanSpy()', $this->chanSpy->toString());
+
+        $this->chanSpy
+            ->setChanPrefix('Agent')
+            ->setOptions(['b', 'c(5)', 'x(1)']);
+
+        $this->assertEquals('ChanSpy(Agent,bc(5)x(1))', $this->chanSpy->toString());
+    }
+}
