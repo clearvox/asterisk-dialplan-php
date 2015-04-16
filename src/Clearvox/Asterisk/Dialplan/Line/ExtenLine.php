@@ -16,6 +16,11 @@ class ExtenLine implements LineInterface
     protected $priority;
 
     /**
+     * @var string
+     */
+    protected $label;
+
+    /**
      * @var \Clearvox\Asterisk\Dialplan\Application\ApplicationInterface
      */
     protected $application;
@@ -60,15 +65,43 @@ class ExtenLine implements LineInterface
     }
 
     /**
+     * Set the label for this line.
+     *
+     * @param string $label
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+        return $this;
+    }
+
+    /**
+     * Get the label set for this line.
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
      * Turn this implemented Line into a string representation.
      *
      * @return string
      */
     public function toString()
     {
+        $label = '';
+
+        if (isset($this->label)) {
+            $label = '(' . $this->label . ')';
+        }
+
         return 'exten => ' .
             $this->getPattern() .
-            ',' . $this->getPriority() .
+            ',' . $this->getPriority() . $label .
             ',' . $this->application->toString();
     }
 }
