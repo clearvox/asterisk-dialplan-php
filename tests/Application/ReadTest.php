@@ -28,6 +28,6 @@ class ReadTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('TESTING,vm-password', $this->read->getData());
 
         $this->read->setTimeout(5);
-        $this->assertEquals('TESTING,,,,,5', $this->read->getData());
+        $this->assertEquals('TESTING,vm-password,,,,5', $this->read->getData());
     }
 }
