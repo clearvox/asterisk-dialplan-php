@@ -71,6 +71,17 @@ class Dialplan
     }
 
     /**
+     * Helper function get the next priority number that can be used in
+     * exten lines.
+     *
+     * @return int
+     */
+    public function getNextPriority()
+    {
+        return count($this->lines) + 1;
+    }
+
+    /**
      * Turn the complete dialplan into a string, including
      * newline characters.
      *
