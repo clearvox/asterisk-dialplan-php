@@ -50,12 +50,54 @@ class DialplanTest extends PHPUnit_Framework_TestCase
 
     public function testDialplanGetNextPriority()
     {
+        $firstMock = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');
+        $firstMock
+            ->expects($this->once())
+            ->method('getPattern')
+            ->willReturn('*1');
+
+        $secondMock = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');
+        $secondMock
+            ->expects($this->once())
+            ->method('getPattern')
+            ->willReturn('*1');
+
         $dialplan = new Dialplan('testing_context');
         $dialplan
-            ->addLine($this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface'))
-            ->addLine($this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface'));
+            ->addLine($firstMock)
+            ->addLine($secondMock);
 
-        $this->assertEquals(3, $dialplan->getNextPriority());
+        $this->assertEquals(3, $dialplan->getNextPriority('*1'));
+    }
+
+    public function testDialplanGetNextPriorityWithMultiplePatterns()
+    {
+        $firstMock = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');
+        $firstMock
+            ->expects($this->exactly(2))
+            ->method('getPattern')
+            ->willReturn('*1');
+
+        $secondMock = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');
+        $secondMock
+            ->expects($this->exactly(2))
+            ->method('getPattern')
+            ->willReturn('*2');
+
+        $thirdMock = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');
+        $thirdMock
+            ->expects($this->exactly(2))
+            ->method('getPattern')
+            ->willReturn('*2');
+
+        $dialplan = new Dialplan('testing_context');
+        $dialplan
+            ->addLine($firstMock)
+            ->addLine($secondMock)
+            ->addLine($thirdMock);
+
+        $this->assertEquals(2, $dialplan->getNextPriority('*1'));
+        $this->assertEquals(3, $dialplan->getNextPriority('*2'));
     }
 }
  

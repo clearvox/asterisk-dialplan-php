@@ -74,11 +74,16 @@ class Dialplan
      * Helper function get the next priority number that can be used in
      * exten lines.
      *
+     * @param string $pattern
      * @return int
      */
-    public function getNextPriority()
+    public function getNextPriority($pattern)
     {
-        return count($this->lines) + 1;
+        $lines = array_filter($this->lines, function(LineInterface $line) use ($pattern){
+            return ($line->getPattern() === $pattern);
+        });
+
+        return count($lines) + 1;
     }
 
     /**
