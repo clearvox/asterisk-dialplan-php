@@ -77,8 +77,12 @@ class Dialplan
      * @param string $pattern
      * @return int
      */
-    public function getNextPriority($pattern)
+    public function getNextPriority($pattern = null)
     {
+        if (null === $pattern) {
+            return count($this->lines) + 1;
+        }
+
         $lines = array_filter($this->lines, function(LineInterface $line) use ($pattern){
             return ($line->getPattern() === $pattern);
         });
