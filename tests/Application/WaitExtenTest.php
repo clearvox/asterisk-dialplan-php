@@ -27,14 +27,14 @@ class WaitExtenTest extends PHPUnit_Framework_TestCase
 
     public function testWithOptions()
     {
-        $this->waitExten->setOptions(['m(/path/to/music/file)']);
-        $this->assertEquals('WaitExten(,m(/path/to/music/file))', $this->waitExten->toString());
+        $this->waitExten->setOptions(['m(default)']);
+        $this->assertEquals('WaitExten(,m(default))', $this->waitExten->toString());
     }
 
     public function testWithWaitTimeAndOptions()
     {
         $this->waitExten->setSeconds(45);
-        $this->waitExten->setOptions(['m(/path/to/music/file)']);
-        $this->assertEquals('WaitExten(45,m(/path/to/music/file))', $this->waitExten->toString());
+        $this->waitExten->setOptions(['m(default)']);
+        $this->assertEquals('WaitExten(45,m(default))', $this->waitExten->toString());
     }
 }
