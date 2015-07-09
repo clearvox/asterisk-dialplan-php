@@ -25,6 +25,11 @@ class Dialplan
     protected $lines = array();
 
     /**
+     * @var bool
+     */
+    protected $extended = false;
+
+    /**
      * Make a new Dialplan requiring the first line in the
      * Dialplan.
      *
@@ -91,6 +96,30 @@ class Dialplan
     }
 
     /**
+     * Set that this dialplan should extend another dialplan with the same name
+     *
+     * @see https://wiki.asterisk.org/wiki/display/AST/Adding+to+an+existing+section
+     * @param bool $extend
+     * @return $this
+     */
+    public function setExtended($extend)
+    {
+        $this->extended = $extend;
+        return $this;
+    }
+
+    /**
+     * Is this dialplan an extended dialplan?
+     *
+     * @see https://wiki.asterisk.org/wiki/display/AST/Adding+to+an+existing+section
+     * @return bool
+     */
+    public function isExtended()
+    {
+        return $this->extended;
+    }
+
+    /**
      * Turn the complete dialplan into a string, including
      * newline characters.
      *
@@ -98,7 +127,12 @@ class Dialplan
      */
     public function toString()
     {
-        $string = "[{$this->contextName}]\n";
+        if ($this->extended) {
+            $string = "[{$this->contextName}](+)\n";
+        } else {
+            $string = "[{$this->contextName}]\n";
+        }
+
         foreach ($this->lines as $line) {
             $string .= $line->toString() . "\n";
         }

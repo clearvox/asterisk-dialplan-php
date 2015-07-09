@@ -109,5 +109,15 @@ class DialplanTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, $dialplan->getNextPriority('*1'));
         $this->assertEquals(3, $dialplan->getNextPriority('*2'));
     }
+
+    public function testDialplanExtension()
+    {
+        $dialplan = new Dialplan('example_dialplan');
+        $dialplan->setExtended(true);
+
+        $expected = "[example_dialplan](+)\n\n";
+
+        $this->assertEquals($expected, $dialplan->toString());
+    }
 }
  
