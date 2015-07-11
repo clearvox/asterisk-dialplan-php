@@ -11,6 +11,8 @@ namespace Clearvox\Asterisk\Dialplan\Application;
  */
 class UndeterminedApplication implements ApplicationInterface
 {
+    use StandardApplicationTrait;
+
     /**
      * @var string
      */
@@ -46,16 +48,6 @@ class UndeterminedApplication implements ApplicationInterface
     public function getData()
     {
         return $this->data;
-    }
-
-    /**
-     * The string representation of the Application.
-     *
-     * @return string
-     */
-    public function toString()
-    {
-        return '';
     }
 
     /**
