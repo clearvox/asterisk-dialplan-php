@@ -444,7 +444,16 @@ class Queue implements ApplicationInterface
     public function toArray()
     {
         return [
-
+            'name'              => $this->name,
+            'options'           => $this->options,
+            'url'               => $this->url,
+            'announce_override' => $this->announceOverride,
+            'timeout'           => $this->timeout,
+            'agi'               => $this->agi,
+            'macro'             => $this->macro,
+            'go_sub'            => $this->goSub,
+            'rule'              => $this->rule,
+            'position'          => $this->position
         ];
     }
 

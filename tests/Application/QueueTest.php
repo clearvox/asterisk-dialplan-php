@@ -176,4 +176,62 @@ class QueueTest extends PHPUnit_Framework_TestCase
             $this->queue->getData()
         );
     }
+
+    public function testToArray()
+    {
+        $this->queue
+            ->setOptions(['c', 'r'])
+            ->setURL('http://test.com')
+            ->setAnnounceOverride('beep')
+            ->setTimeout(10)
+            ->setAGI('agi-example')
+            ->setMacro('another')
+            ->setGoSub('example-gosub')
+            ->setRule('override-rule')
+            ->setPosition(3);
+
+        $expected = [
+            'name' => 'testing',
+            'options' => ['c', 'r'],
+            'url' => 'http://test.com',
+            'announce_override' => 'beep',
+            'timeout' => 10,
+            'agi' => 'agi-example',
+            'macro' => 'another',
+            'go_sub' => 'example-gosub',
+            'rule' => 'override-rule',
+            'position' => 3
+        ];
+
+        $this->assertEquals($expected, $this->queue->toArray());
+    }
+
+    public function testToJson()
+    {
+        $this->queue
+            ->setOptions(['c', 'r'])
+            ->setURL('http://test.com')
+            ->setAnnounceOverride('beep')
+            ->setTimeout(10)
+            ->setAGI('agi-example')
+            ->setMacro('another')
+            ->setGoSub('example-gosub')
+            ->setRule('override-rule')
+            ->setPosition(3);
+
+        $expected = json_encode([
+            'name' => 'testing',
+            'options' => ['c', 'r'],
+            'url' => 'http://test.com',
+            'announce_override' => 'beep',
+            'timeout' => 10,
+            'agi' => 'agi-example',
+            'macro' => 'another',
+            'go_sub' => 'example-gosub',
+            'rule' => 'override-rule',
+            'position' => 3
+        ]);
+
+        $this->assertEquals($expected, $this->queue->toJson());
+    }
 }
