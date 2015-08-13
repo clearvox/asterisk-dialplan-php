@@ -3,6 +3,18 @@
 
 Simplify your Dialplan building in a clean OOP, tested way.
 
+# Installation
+
+Install the latest version with:
+
+```bash
+$ composer require clearvox/asterisk-dialplan
+```
+
+# Requirements
+
+* PHP 5.4 is required but using the latest version of PHP is highly recommended.
+
 # Documentation
 
 Read the full documentation on the wiki found [https://github.com/clearvox/asterisk-dialplan-php/wiki](https://github.com/clearvox/asterisk-dialplan-php/wiki)
