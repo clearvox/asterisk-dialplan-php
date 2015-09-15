@@ -91,11 +91,19 @@ class GotoIf implements ApplicationInterface
      */
     public function toArray()
     {
-        return array(
+        $array = array(
             'condition' => $this->condition,
-            'true' => $this->true->toArray(),
-            'false' => $this->false->toArray()
         );
+
+        if (isset($this->true)) {
+            $array['true'] = $this->true->toArray();
+        }
+
+        if (isset($this->false)) {
+            $array['false'] = $this->false->toArray();
+        }
+
+        return $array;
     }
 
     /**
