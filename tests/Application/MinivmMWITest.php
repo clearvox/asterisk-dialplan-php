@@ -49,6 +49,12 @@ class MinivmMWITest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $this->minivmMWI->toArray());
     }
 
+    public function testToString()
+    {
+        $expected = "MinivmMWI(example@host.com,0,1,2)";
+        $this->assertEquals($expected, $this->minivmMWI->toString());
+    }
+
     public function testToJson()
     {
         $expected = json_encode(['account' => 'example@host.com', 'urgent' => 0, 'new' => 1, 'old' => 2]);
