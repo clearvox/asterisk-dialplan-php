@@ -1,5 +1,6 @@
 <?php
-namespace Clearvox\Asterisk\Dialplan\Line;
+
+use Clearvox\Asterisk\Dialplan\Line\CommentLine;
 
 class CommentLineTest extends \PHPUnit_Framework_TestCase
 {
