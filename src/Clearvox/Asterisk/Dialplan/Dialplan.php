@@ -80,6 +80,7 @@ class Dialplan
      * Get the line with this pattern, at this specific
      * priority
      *
+     * @throws LineNotFoundAtPriorityException
      * @param string $pattern
      * @param string $priority
      * @return LineInterface
