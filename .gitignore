@@ -1,4 +1,6 @@
 # Created by .gitignore support plugin (hsz.mobi)
 composer.lock
+composer.phar
 vendor
 .idea
+php5
