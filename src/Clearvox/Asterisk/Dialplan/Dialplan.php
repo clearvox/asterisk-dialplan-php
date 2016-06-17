@@ -111,7 +111,7 @@ class Dialplan
             if($line->getPattern() === $pattern) {
                 if($priority !== null) {
 
-                    if($line->getPriority() === $priority) {
+                    if($line->getPriority() == $priority) {
                         return true;
                     }
 
@@ -138,7 +138,7 @@ class Dialplan
         }
 
         foreach($this->lines as $key => $line) {
-            if($line->getPattern() === $pattern && $line->getPriority() == $line->getPriority()) {
+            if($line->getPattern() === $pattern && $line->getPriority() == $priority) {
                 unset($this->lines[$key]);
             }
         }
