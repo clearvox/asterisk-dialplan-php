@@ -30,8 +30,5 @@ class ReaderTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('ea91e4f9-633c-4fa6-b357-438078ecf585', $dialplan->getName());
         $this->assertEquals(28, count($dialplan->getLines()));
-
-
-        var_dump($dialplan->getLines());
     }
 }
