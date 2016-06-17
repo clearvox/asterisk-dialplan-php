@@ -1,6 +1,7 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Dialplan;
+use Clearvox\Asterisk\Dialplan\Line\LineInterface;
 
 class DialplanTest extends PHPUnit_Framework_TestCase
 {
@@ -118,6 +119,50 @@ class DialplanTest extends PHPUnit_Framework_TestCase
         $expected = "[example_dialplan](+)\n\n";
 
         $this->assertEquals($expected, $dialplan->toString());
+    }
+
+    public function testGetLine()
+    {
+        $dialplan = new Dialplan('testing_lines');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->exactly(2))
+            ->method('getPattern')
+            ->willReturn('100');
+
+        $firstMock
+            ->expects($this->exactly(2))
+            ->method('getPriority')
+            ->willReturn(1);
+
+        $dialplan->addLine($firstMock);
+
+        $this->assertSame($firstMock, $dialplan->getLine('100', 1));
+        $this->assertNull($dialplan->getLine('100', 2));
+    }
+
+    public function testHasLine()
+    {
+        $dialplan = new Dialplan('testing_has_line');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->exactly(4))
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $firstMock
+            ->expects($this->exactly(1))
+            ->method('getPriority')
+            ->willReturn(1);
+
+        $dialplan->addLine($firstMock);
+
+        $this->assertTrue($dialplan->hasLine("200", 1));
+        $this->assertFalse($dialplan->hasLine("300", 1));
+        $this->assertTrue($dialplan->hasLine("200"));
+        $this->assertFalse($dialplan->hasLine("300"));
     }
 }
  

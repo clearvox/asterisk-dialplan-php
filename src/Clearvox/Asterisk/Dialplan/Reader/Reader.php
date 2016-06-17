@@ -2,6 +2,7 @@
 namespace Clearvox\Asterisk\Dialplan\Reader;
 
 use Clearvox\Asterisk\Dialplan\Dialplan;
+use Clearvox\Asterisk\Dialplan\Reader\Line\LineReaderInterface;
 use Closure;
 
 class Reader
@@ -11,26 +12,60 @@ class Reader
      */
     protected $onStartContextClosure;
 
-    public function __construct()
+    /**
+     * @var LineReaderInterface[]
+     */
+    protected $lines = [];
+
+    /**
+     * Reader constructor.
+     * @param LineReaderInterface[] $lines
+     */
+    public function __construct($lines)
     {
+        $this->lines = $lines;
+
         // Register the default closures
         $this->onStartContextClosure = function($line) {
-            return $this->startContext($line);
+            $contextName = str_replace(['[', ']'], '', $line);
+            return new Dialplan($contextName);
         };
     }
 
+    /**
+     * Read the contents of the string, and return an instance of
+     * @param string $contents
+     * @return Dialplan
+     */
     public function read($contents)
     {
+        $onStartContext = $this->onStartContextClosure;
+
         $lines = explode(PHP_EOL, $contents);
+
+        $dialplan = null;
 
         foreach ($lines as $line) {
             // Starting
             if(strpos($line, '[') === 0) {
-                $dialplan = $this->onStartContextClosure($line);
+                $dialplan = $onStartContext($line);
             }
 
+            // Match the lines
+            foreach($this->lines as $lineReader) {
+                $matches = [];
 
+                if(preg_match($lineReader->getMatchFormat(), $line, $matches)) {
+                    $dialplan->addLine($lineReader->getInstance($matches));
+                }
+            }
         }
+
+        if(is_null($dialplan)) {
+            // throw exception
+        }
+
+        return $dialplan;
     }
 
     /**
@@ -45,17 +80,5 @@ class Reader
     {
         $this->onStartContextClosure = $closure;
         return $this;
-    }
-
-    /**
-     * Build a simple dialplan class from the line
-     *
-     * @param string $line
-     * @return Dialplan
-     */
-    protected function startContext($line)
-    {
-        $contextName = str_replace(['[', ']'], '', $line);
-        return new Dialplan($contextName);
     }
 }
