@@ -1,6 +1,7 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Dialplan;
+use Clearvox\Asterisk\Dialplan\Exception\LineNotFoundAtPriorityException;
 use Clearvox\Asterisk\Dialplan\Line\LineInterface;
 
 class DialplanTest extends PHPUnit_Framework_TestCase
@@ -139,7 +140,15 @@ class DialplanTest extends PHPUnit_Framework_TestCase
         $dialplan->addLine($firstMock);
 
         $this->assertSame($firstMock, $dialplan->getLine('100', 1));
-        $this->assertNull($dialplan->getLine('100', 2));
+
+        try {
+            $dialplan->getLine('100', 2);
+        } catch(\Exception $e) {
+            $this->assertInstanceOf(LineNotFoundAtPriorityException::class, $e);
+            return;
+        }
+        
+        $this->fail("No exception thrown for dialplan::getLine(100,2)");
     }
 
     public function testHasLine()
