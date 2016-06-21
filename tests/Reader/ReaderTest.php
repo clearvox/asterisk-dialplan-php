@@ -31,4 +31,12 @@ class ReaderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('ea91e4f9-633c-4fa6-b357-438078ecf585', $dialplan->getName());
         $this->assertEquals(28, count($dialplan->getLines()));
     }
+
+    public function testExtendedDialplan()
+    {
+        $dialplan = $this->reader->read(file_get_contents(__DIR__ . '/source-examples/extended-dialplan.txt'));
+
+        $this->assertEquals('something_unattached', $dialplan->getName());
+        $this->assertTrue($dialplan->isExtended());
+    }
 }

@@ -28,7 +28,17 @@ class Reader
         // Register the default closures
         $this->onStartContextClosure = function($line) {
             $contextName = str_replace(['[', ']'], '', $line);
-            return new Dialplan($contextName);
+            $extended = false;
+
+            if(strpos($contextName, '(+)') !== -1) {
+                $contextName = str_replace('(+)', '', $contextName);
+                $extended = true;
+            }
+
+            $dialplan = new Dialplan($contextName);
+            $dialplan->setExtended($extended);
+
+            return $dialplan;
         };
     }
 
