@@ -1,11 +1,12 @@
 {
-    "name":              "clearvox/asterisk-dialplan",
-    "description":       "A PHP Asterisk DialPlan Library",
+    "name": "clearvox/asterisk-dialplan",
+    "description": "A PHP Asterisk DialPlan Library",
     "minimum-stability": "dev",
-    "license":           "MIT",
-    "authors":           [
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
         {
-            "name":  "Leon Rowland",
+            "name": "Leon Rowland",
             "email": "leon@rowland.nl"
         }
     ],
