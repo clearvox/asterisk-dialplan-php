@@ -31,7 +31,7 @@ class ExtenLineReader implements LineReaderInterface
      */
     public function getMatchFormat()
     {
-        return "/^exten\\s?=>\\s?([A-Za-z0-9\\-]+),([0-9]+)(\\(?.+\\))?,([$[{}_,=\\]?:\\'\"A-Za-z0-9\\)\\(\\-\\s]+)/";
+        return "/^exten\s?=>\s?([A-Za-z0-9\-]+),([0-9]+)(\(?.+\))?,(.+)/";
     }
 
     /**
