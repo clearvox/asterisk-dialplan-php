@@ -1,6 +1,8 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Dialplan;
+use Clearvox\Asterisk\Dialplan\Exception\LineNotFoundAtPriorityException;
+use Clearvox\Asterisk\Dialplan\Line\LineInterface;
 
 class DialplanTest extends PHPUnit_Framework_TestCase
 {
@@ -118,6 +120,102 @@ class DialplanTest extends PHPUnit_Framework_TestCase
         $expected = "[example_dialplan](+)\n\n";
 
         $this->assertEquals($expected, $dialplan->toString());
+    }
+
+    public function testGetLine()
+    {
+        $dialplan = new Dialplan('testing_lines');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->exactly(2))
+            ->method('getPattern')
+            ->willReturn('100');
+
+        $firstMock
+            ->expects($this->exactly(2))
+            ->method('getPriority')
+            ->willReturn(1);
+
+        $dialplan->addLine($firstMock);
+
+        $this->assertSame($firstMock, $dialplan->getLine('100', 1));
+
+        try {
+            $dialplan->getLine('100', 2);
+        } catch(\Exception $e) {
+            $this->assertInstanceOf(LineNotFoundAtPriorityException::class, $e);
+            return;
+        }
+
+        $this->fail("No exception thrown for dialplan::getLine(100,2)");
+    }
+
+    public function testHasLine()
+    {
+        $dialplan = new Dialplan('testing_has_line');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->exactly(4))
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $firstMock
+            ->expects($this->exactly(1))
+            ->method('getPriority')
+            ->willReturn(1);
+
+        $dialplan->addLine($firstMock);
+
+        $this->assertTrue($dialplan->hasLine("200", 1));
+        $this->assertFalse($dialplan->hasLine("300", 1));
+        $this->assertTrue($dialplan->hasLine("200"));
+        $this->assertFalse($dialplan->hasLine("300"));
+    }
+
+    public function testRemoveLine()
+    {
+        $dialplan = new Dialplan('testing_remove_line');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->atLeastOnce())
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $firstMock
+            ->expects($this->atLeastOnce())
+            ->method('getPriority')
+            ->willReturn(10);
+
+        $secondMock = $this->getMock(LineInterface::class);
+        $secondMock
+            ->expects($this->atLeastOnce())
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $secondMock
+            ->expects($this->atLeastOnce())
+            ->method('getPriority')
+            ->willReturn(11);
+
+        $dialplan
+            ->addLine($firstMock)
+            ->addLine($secondMock);
+
+        $this->assertEquals(2, count($dialplan->getLines()));
+        $dialplan->removeLine("200", 10);
+        $this->assertEquals(1, count($dialplan->getLines()));
+
+        try {
+            $dialplan->removeLine("200", 12);
+        } catch(\Exception $e) {
+            $this->assertInstanceOf(LineNotFoundAtPriorityException::class, $e);
+            return;
+        }
+
+        $this->fail('Missing exception');
     }
 }
  

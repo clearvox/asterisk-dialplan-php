@@ -1,0 +1,4 @@
+[dialplan_context_1]
+exten => s,1,NoOp(No Action taken here)
+exten => s,2,NoOp(Second line no action)
+exten => s,3,NoOp(3rd numbered line no action)

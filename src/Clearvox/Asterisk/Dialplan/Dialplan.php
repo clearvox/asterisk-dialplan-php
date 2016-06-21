@@ -1,6 +1,7 @@
 <?php
 namespace Clearvox\Asterisk\Dialplan;
 
+use Clearvox\Asterisk\Dialplan\Exception\LineNotFoundAtPriorityException;
 use Clearvox\Asterisk\Dialplan\Line\LineInterface;
 
 /**
@@ -73,6 +74,74 @@ class Dialplan
     public function getLines()
     {
         return $this->lines;
+    }
+
+    /**
+     * Get the line with this pattern, at this specific
+     * priority
+     *
+     * @throws LineNotFoundAtPriorityException
+     * @param string $pattern
+     * @param string $priority
+     * @return LineInterface
+     */
+    public function getLine($pattern, $priority)
+    {
+        foreach($this->lines as $line) {
+            if($line->getPattern() === $pattern && $line->getPriority() == $priority) {
+                return $line;
+            }
+        }
+
+        throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
+    }
+
+    /**
+     * Determine if this dialplan has a matching pattern. If you want to know if
+     * a pattern and a priority exist specifically then pass in the priority
+     * number in.
+     *
+     * @param string $pattern
+     * @param null|integer $priority
+     * @return boolean
+     */
+    public function hasLine($pattern, $priority = null)
+    {
+        foreach($this->lines as $line) {
+            if($line->getPattern() === $pattern) {
+                if($priority !== null) {
+
+                    if($line->getPriority() == $priority) {
+                        return true;
+                    }
+
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove a line with the matching pattern and priority.
+     *
+     * @param string $pattern
+     * @param integer $priority
+     * @throws LineNotFoundAtPriorityException
+     */
+    public function removeLine($pattern, $priority)
+    {
+        if(!$this->hasLine($pattern, $priority)) {
+            throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
+        }
+
+        foreach($this->lines as $key => $line) {
+            if($line->getPattern() === $pattern && $line->getPriority() == $priority) {
+                unset($this->lines[$key]);
+            }
+        }
     }
 
     /**
