@@ -217,5 +217,30 @@ class DialplanTest extends PHPUnit_Framework_TestCase
 
         $this->fail('Missing exception');
     }
+
+    public function testRemoveLines()
+    {
+        $dialplan = new Dialplan('testing_removing_lines');
+
+        $firstMock = $this->getMock(LineInterface::class);
+        $firstMock
+            ->expects($this->atLeastOnce())
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $secondMock = $this->getMock(LineInterface::class);
+        $secondMock
+            ->expects($this->atLeastOnce())
+            ->method('getPattern')
+            ->willReturn('200');
+
+        $dialplan
+            ->addLine($firstMock)
+            ->addline($secondMock);
+
+        $this->assertEquals(2, count($dialplan->getLines()));
+        $dialplan->removeLines("200");
+        $this->assertEquals(0, count($dialplan->getLines()));
+    }
 }
  

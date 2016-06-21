@@ -23,7 +23,7 @@ class Dialplan
     /**
      * @var LineInterface[]
      */
-    protected $lines = array();
+    protected $lines = [];
 
     /**
      * @var bool
@@ -87,8 +87,8 @@ class Dialplan
      */
     public function getLine($pattern, $priority)
     {
-        foreach($this->lines as $line) {
-            if($line->getPattern() === $pattern && $line->getPriority() == $priority) {
+        foreach ($this->lines as $line) {
+            if ($line->getPattern() === $pattern && $line->getPriority() == $priority) {
                 return $line;
             }
         }
@@ -107,11 +107,11 @@ class Dialplan
      */
     public function hasLine($pattern, $priority = null)
     {
-        foreach($this->lines as $line) {
-            if($line->getPattern() === $pattern) {
-                if($priority !== null) {
+        foreach ($this->lines as $line) {
+            if ($line->getPattern() === $pattern) {
+                if ($priority !== null) {
 
-                    if($line->getPriority() == $priority) {
+                    if ($line->getPriority() == $priority) {
                         return true;
                     }
 
@@ -133,12 +133,30 @@ class Dialplan
      */
     public function removeLine($pattern, $priority)
     {
-        if(!$this->hasLine($pattern, $priority)) {
+        if (!$this->hasLine($pattern, $priority)) {
             throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
         }
 
-        foreach($this->lines as $key => $line) {
-            if($line->getPattern() === $pattern && $line->getPriority() == $priority) {
+        $lines = $this->lines;
+
+        foreach ($lines as $key => $line) {
+            if ($line->getPattern() === $pattern && $line->getPriority() == $priority) {
+                unset($this->lines[$key]);
+            }
+        }
+    }
+
+    /**
+     * Remove all lines in this dialplan with this pattern.
+     *
+     * @param string $pattern
+     */
+    public function removeLines($pattern)
+    {
+        $lines = $this->lines;
+
+        foreach ($lines as $key => $line) {
+            if ($line->getPattern() === $pattern) {
                 unset($this->lines[$key]);
             }
         }
@@ -157,9 +175,12 @@ class Dialplan
             return count($this->lines) + 1;
         }
 
-        $lines = array_filter($this->lines, function(LineInterface $line) use ($pattern){
-            return ($line->getPattern() === $pattern);
-        });
+        $lines = array_filter(
+            $this->lines,
+            function (LineInterface $line) use ($pattern) {
+                return ($line->getPattern() === $pattern);
+            }
+        );
 
         return count($lines) + 1;
     }
