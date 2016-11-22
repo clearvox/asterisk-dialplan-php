@@ -14,6 +14,14 @@ class DialplanTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('testing_context', $dialplan->getName());
     }
 
+    public function testDialplanOverridesContextName()
+    {
+        $dialplan = new Dialplan('testing_context');
+        $this->assertEquals('testing_context', $dialplan->getName());
+        $dialplan->setName('changing_context');
+        $this->assertEquals('changing_context', $dialplan->getName());
+    }
+
     public function testAddLineCorrectlyHasRightPriority()
     {
         $line = $this->getMock('Clearvox\Asterisk\Dialplan\Line\LineInterface');

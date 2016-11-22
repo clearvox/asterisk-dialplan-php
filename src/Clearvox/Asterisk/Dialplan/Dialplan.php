@@ -57,6 +57,18 @@ class Dialplan
     }
 
     /**
+     * Override the context name for this dialplan to something new
+     *
+     * @param $contextName
+     * @return $this
+     */
+    public function setName($contextName)
+    {
+        $this->contextName = $contextName;
+        return $this;
+    }
+
+    /**
      * Add a Line to this dialplan.
      *
      * @param LineInterface $line
