@@ -1,5 +1,6 @@
 <?php
 
+use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Line\ExtenLine;
 
 class ExtenLineTest extends \PHPUnit_Framework_TestCase

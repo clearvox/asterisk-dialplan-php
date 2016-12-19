@@ -31,4 +31,89 @@ class ExtenLineReaderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('1', $line->getPriority());
         $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
     }
+
+    public function testAlternativePatternPossibilities()
+    {
+        $extenLineReader = new ExtenLineReader();
+
+        $withSymbol  = 'exten => +3112345678,1,NoOp(Hello World)';
+
+        $matches = [];
+        preg_match($extenLineReader->getMatchFormat(), $withSymbol, $matches);
+
+        $line = $extenLineReader->getInstance($matches);
+
+        $this->assertInstanceOf(ExtenLine::class, $line);
+        $this->assertEquals('+3112345678', $line->getPattern());
+        $this->assertEquals(1, $line->getPriority());
+        $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
+    }
+
+    public function testBasicPatternPossibility()
+    {
+        $extenLineReader = new ExtenLineReader();
+
+        $basicNumber = 'exten => 3112345678,1,NoOp(Hello World)';
+
+        $matches = [];
+        preg_match($extenLineReader->getMatchFormat(), $basicNumber, $matches);
+
+        $line = $extenLineReader->getInstance($matches);
+
+        $this->assertInstanceOf(ExtenLine::class, $line);
+        $this->assertEquals('3112345678', $line->getPattern());
+        $this->assertEquals(1, $line->getPriority());
+        $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
+    }
+
+    public function testWordPatternPossibility()
+    {
+        $extenLineReader = new ExtenLineReader();
+
+        $exampleWord = 'exten => exampleword,1,NoOp(Hello World)';
+
+        $matches = [];
+        preg_match($extenLineReader->getMatchFormat(), $exampleWord, $matches);
+
+        $line = $extenLineReader->getInstance($matches);
+
+        $this->assertInstanceOf(ExtenLine::class, $line);
+        $this->assertEquals('exampleword', $line->getPattern());
+        $this->assertEquals(1, $line->getPriority());
+        $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
+    }
+
+    public function testUnderscorePatternPossibility()
+    {
+        $extenLineReader = new ExtenLineReader();
+
+        $exampleWord = 'exten => example_word,1,NoOp(Hello World)';
+
+        $matches = [];
+        preg_match($extenLineReader->getMatchFormat(), $exampleWord, $matches);
+
+        $line = $extenLineReader->getInstance($matches);
+
+        $this->assertInstanceOf(ExtenLine::class, $line);
+        $this->assertEquals('example_word', $line->getPattern());
+        $this->assertEquals(1, $line->getPriority());
+        $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
+    }
+
+    public function testDashPatternPossibility()
+    {
+        $extenLineReader = new ExtenLineReader();
+
+        $exampleWord = 'exten => example-word,1,NoOp(Hello World)';
+
+        $matches = [];
+        preg_match($extenLineReader->getMatchFormat(), $exampleWord, $matches);
+
+        $line = $extenLineReader->getInstance($matches);
+
+        $this->assertInstanceOf(ExtenLine::class, $line);
+        $this->assertEquals('example-word', $line->getPattern());
+        $this->assertEquals(1, $line->getPriority());
+        $this->assertInstanceOf(ApplicationInterface::class, $line->getApplication());
+    }
 }

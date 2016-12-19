@@ -1,0 +1,5 @@
+[number_incoming]
+exten => 012345678,1,Gosub(language_tts,s,${ACCOUNT_LANGUAGE}-tts-number-not-attached)
+exten => 3112345678,1,Gosub(language_tts,s,${ACCOUNT_LANGUAGE}-tts-number-not-attached)
+exten => +3112345678,1,Gosub(language_tts,s,${ACCOUNT_LANGUAGE}-tts-number-not-attached)
+exten => 003112345678,1,Gosub(language_tts,s,${ACCOUNT_LANGUAGE}-tts-number-not-attached)
