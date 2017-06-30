@@ -7,6 +7,10 @@
         {
             "name": "Leon Rowland",
             "email": "leon@rowland.nl"
+        },
+        {
+            "name": "Yme-Jan Iedema",
+            "email": "yme-jan@clearvox.nl"
         }
     ],
     "autoload": {
