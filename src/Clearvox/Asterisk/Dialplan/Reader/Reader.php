@@ -30,7 +30,7 @@ class Reader
             $contextName = str_replace(['[', ']'], '', $line);
             $extended = false;
 
-            if(strpos($contextName, '(+)') !== -1) {
+            if(strpos($contextName, '(+)') !== false) {
                 $contextName = str_replace('(+)', '', $contextName);
                 $extended = true;
             }
