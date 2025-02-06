@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Queue;
+use PHPUnit\Framework\TestCase;
 
-class QueueTest extends PHPUnit_Framework_TestCase
+class QueueTest extends TestCase
 {
     /**
      * @var Queue

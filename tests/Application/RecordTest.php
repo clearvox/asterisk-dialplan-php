@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Record;
+use PHPUnit\Framework\TestCase;
 
-class RecordTest extends PHPUnit_Framework_TestCase
+class RecordTest extends TestCase
 {
     /**
      * @var Record

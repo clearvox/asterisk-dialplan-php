@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\EndWhileApplication;
+use PHPUnit\Framework\TestCase;
 
-class EndWhileApplicationTest extends PHPUnit_Framework_TestCase
+class EndWhileApplicationTest extends TestCase
 {
     /**
      * @var EndWhileApplication

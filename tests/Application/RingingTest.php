@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Ringing;
+use PHPUnit\Framework\TestCase;
 
-class RingingTest extends PHPUnit_Framework_TestCase
+class RingingTest extends TestCase
 {
     public function testToString()
     {

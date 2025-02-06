@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Playback;
+use PHPUnit\Framework\TestCase;
 
-class PlaybackTest extends PHPUnit_Framework_TestCase
+class PlaybackTest extends TestCase
 {
     /**
      * @var Playback

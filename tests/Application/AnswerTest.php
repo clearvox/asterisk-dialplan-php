@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Answer;
+use PHPUnit\Framework\TestCase;
 
-class AnswerTest extends PHPUnit_Framework_TestCase
+class AnswerTest extends TestCase
 {
     /**
      * @var Answer

@@ -102,7 +102,7 @@ class Dialplan
      * a pattern and a priority exist specifically then pass in the priority
      * number in.
      */
-    public function hasLine(string $pattern, int $priority = null): bool
+    public function hasLine(string $pattern, string $priority = null): bool
     {
         foreach ($this->lines as $line) {
             if ($line->getPattern() === $pattern) {
@@ -237,8 +237,8 @@ class Dialplan
 
         // Increase priority for matching lines
         foreach ($nonEmptyLines as $line) {
-            if ($line->getPattern() === $pattern && !empty($line->getPriority())) {
-                $line->setPriority($line->getPriority() + 1);
+            if ($line->getPattern() === $pattern && is_numeric($line->getPriority())) {
+                $line->setPriority((int) $line->getPriority() + 1);
             }
         }
 

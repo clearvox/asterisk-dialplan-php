@@ -44,7 +44,7 @@ class HintLine implements LineInterface
      */
     public function getPriority(): ?string
     {
-        return null;
+        return 'hint';
     }
 
     /**

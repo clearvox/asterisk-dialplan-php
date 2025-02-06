@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Line\IncludeLine;
+use PHPUnit\Framework\TestCase;
 
-class IncludeLineTest extends PHPUnit_Framework_TestCase
+class IncludeLineTest extends TestCase
 {
     public function testToString()
     {

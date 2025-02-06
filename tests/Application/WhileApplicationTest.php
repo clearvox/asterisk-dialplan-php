@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\WhileApplication;
+use PHPUnit\Framework\TestCase;
 
-class WhileApplicationTest extends PHPUnit_Framework_TestCase
+class WhileApplicationTest extends TestCase
 {
     /**
      * @var WhileApplication

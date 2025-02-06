@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Line\HintLine;
+use PHPUnit\Framework\TestCase;
 
-class HintLineTest extends PHPUnit_Framework_TestCase
+class HintLineTest extends TestCase
 {
     /**
      * @var HintLine

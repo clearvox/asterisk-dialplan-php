@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\CELGenUserEvent;
+use PHPUnit\Framework\TestCase;
 
-class CELGenUserEventTest extends PHPUnit_Framework_TestCase
+class CELGenUserEventTest extends TestCase
 {
     /**
      * @var CELGenUserEvent

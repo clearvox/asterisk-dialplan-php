@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\ChanSpy;
+use PHPUnit\Framework\TestCase;
 
-class ChanSpyTest extends PHPUnit_Framework_TestCase
+class ChanSpyTest extends TestCase
 {
     /**
      * @var ChanSpy

@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Application\Stasis;
+use PHPUnit\Framework\TestCase;
 
-class StasisTest extends \PHPUnit_Framework_TestCase
+class StasisTest extends TestCase
 {
     /**
      * @var Stasis

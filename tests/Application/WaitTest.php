@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Wait;
+use PHPUnit\Framework\TestCase;
 
-class WaitTest extends PHPUnit_Framework_TestCase
+class WaitTest extends TestCase
 {
     public function testToString()
     {

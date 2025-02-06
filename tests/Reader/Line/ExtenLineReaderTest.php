@@ -3,8 +3,9 @@
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Line\ExtenLine;
 use Clearvox\Asterisk\Dialplan\Reader\Line\ExtenLineReader;
+use PHPUnit\Framework\TestCase;
 
-class ExtenLineReaderTest extends PHPUnit_Framework_TestCase
+class ExtenLineReaderTest extends TestCase
 {
     public $testString = "exten => 100,1,NoOp(Hello world)";
 

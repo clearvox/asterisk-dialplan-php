@@ -2,8 +2,9 @@
 
 use Clearvox\Asterisk\Dialplan\Application\NoOp;
 use Clearvox\Asterisk\Dialplan\Reader\Application\NoOpReader;
+use PHPUnit\Framework\TestCase;
 
-class NoOpReaderTest extends PHPUnit_Framework_TestCase
+class NoOpReaderTest extends TestCase
 {
     public function testGetInstance()
     {

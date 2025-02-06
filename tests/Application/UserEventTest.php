@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\UserEvent;
+use PHPUnit\Framework\TestCase;
 
-class UserEventTest extends \PHPUnit_Framework_TestCase
+class UserEventTest extends TestCase
 {
     /**
      * @var UserEvent

@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\ExtenSpy;
+use PHPUnit\Framework\TestCase;
 
-class ExtenSpyTest extends PHPUnit_Framework_TestCase
+class ExtenSpyTest extends TestCase
 {
     /**
      * @var ExtenSpy

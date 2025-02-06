@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\GosubReturn;
+use PHPUnit\Framework\TestCase;
 
-class GosubReturnTest extends PHPUnit_Framework_TestCase
+class GosubReturnTest extends TestCase
 {
     public function testGetName()
     {

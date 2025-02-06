@@ -2,12 +2,13 @@
 
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Line\ExtenLine;
+use PHPUnit\Framework\TestCase;
 
-class ExtenLineTest extends \PHPUnit_Framework_TestCase
+class ExtenLineTest extends TestCase
 {
     public function testCorrectStringReturn()
     {
-        $application = $this->getMock('Clearvox\Asterisk\Dialplan\Application\ApplicationInterface');
+        $application = $this->createMock(ApplicationInterface::class);
 
         $application
             ->expects($this->once())
@@ -24,7 +25,7 @@ class ExtenLineTest extends \PHPUnit_Framework_TestCase
 
     public function testCorrectStringReturnWithLabel()
     {
-        $application = $this->getMock('Clearvox\Asterisk\Dialplan\Application\ApplicationInterface');
+        $application = $this->createMock(ApplicationInterface::class);
 
         $application
             ->expects($this->once())

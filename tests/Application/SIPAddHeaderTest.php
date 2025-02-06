@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Application\SIPAddHeader;
+use PHPUnit\Framework\TestCase;
 
-class SIPAddHeaderTest extends \PHPUnit_Framework_TestCase
+class SIPAddHeaderTest  extends TestCase
 {
 
     public function testGetNameIsCorrect()

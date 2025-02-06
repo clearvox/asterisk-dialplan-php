@@ -1,8 +1,10 @@
 <?php
 
+use Clearvox\Asterisk\Dialplan\Application\Go;
 use Clearvox\Asterisk\Dialplan\Application\GotoIf;
+use PHPUnit\Framework\TestCase;
 
-class GotoIfTest extends PHPUnit_Framework_TestCase
+class GotoIfTest extends TestCase
 {
     /**
      * @var PHPUnit_Framework_MockObject_MockObject
@@ -18,8 +20,8 @@ class GotoIfTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->true  = $this->getMock('Clearvox\Asterisk\Dialplan\Application\Go', array('getData'), array(1));
-        $this->false = $this->getMock('Clearvox\Asterisk\Dialplan\Application\Go', array('getData'), array(1));
+        $this->true  = $this->createMock(Go::class);
+        $this->false = $this->createMock(Go::class);
     }
 
     public function testName()

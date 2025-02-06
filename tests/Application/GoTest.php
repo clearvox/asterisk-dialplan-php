@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Go;
+use PHPUnit\Framework\TestCase;
 
-class GoTest extends PHPUnit_Framework_TestCase
+class GoTest extends TestCase
 {
     public function testGetNameIsCorrect()
     {

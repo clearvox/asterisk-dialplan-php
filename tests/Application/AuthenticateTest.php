@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Authenticate;
+use PHPUnit\Framework\TestCase;
 
-class AuthenticateTest extends PHPUnit_Framework_TestCase
+class AuthenticateTest extends TestCase
 {
     /**
      * @var Authenticate

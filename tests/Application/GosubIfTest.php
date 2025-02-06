@@ -1,25 +1,28 @@
 <?php
 
+use Clearvox\Asterisk\Dialplan\Application\Go;
 use Clearvox\Asterisk\Dialplan\Application\GosubIf;
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
-class GosubIfTest extends PHPUnit_Framework_TestCase
+class GosubIfTest extends TestCase
 {
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     public $true;
 
     /**
-     * @var PHPUnit_Framework_MockObject_MockObject
+     * @var MockObject
      */
     public $false;
 
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->true  = $this->getMock('Clearvox\Asterisk\Dialplan\Application\Go', array('getData'), array(1));
-        $this->false = $this->getMock('Clearvox\Asterisk\Dialplan\Application\Go', array('getData'), array(1));
+        $this->true  = $this->createMock(Go::class);
+        $this->false = $this->createMock(Go::class);
     }
 
     public function testName()

@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Realtime;
+use PHPUnit\Framework\TestCase;
 
-class RealtimeTest extends PHPUnit_Framework_TestCase
+class RealtimeTest extends TestCase
 {
     public function testGetNameIsCorrect()
     {

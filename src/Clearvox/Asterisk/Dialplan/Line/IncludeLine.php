@@ -30,7 +30,7 @@ class IncludeLine implements LineInterface
      */
     public function getPriority(): ?string
     {
-        return null;
+        return '';
     }
 
     /**

@@ -1,8 +1,10 @@
 <?php
 
+use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Application\ExecIf;
+use PHPUnit\Framework\TestCase;
 
-class ExecIfTest extends PHPUnit_Framework_TestCase
+class ExecIfTest extends TestCase
 {
     public $expression = '$["${CHANNEL(state)}" != "Up"]';
 
@@ -13,7 +15,8 @@ class ExecIfTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $applicationMock = $this->getMock('Clearvox\Asterisk\Dialplan\Application\ApplicationInterface');
+        $applicationMock = $this->getMock();
+
         $applicationMock
             ->expects($this->any())
             ->method('toString')
@@ -65,5 +68,12 @@ class ExecIfTest extends PHPUnit_Framework_TestCase
 
         $expected = "ExecIf({$this->expression}?Answer:NoOp(Answered))";
         $this->assertEquals($expected, $this->execIf->toString());
+    }
+
+    private function getMock()
+    {
+        return $this->getMockBuilder(ApplicationInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\BackGround;
+use PHPUnit\Framework\TestCase;
 
-class BackGroundTest extends PHPUnit_Framework_TestCase
+class BackGroundTest extends TestCase
 {
     /**
      * @var BackGround
