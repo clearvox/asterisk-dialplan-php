@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Application\WaitExten;
+use PHPUnit\Framework\TestCase;
 
-class WaitExtenTest extends PHPUnit_Framework_TestCase
+class WaitExtenTest extends TestCase
 {
     /**
      * @var WaitExten

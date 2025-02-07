@@ -1,4 +1,5 @@
 <?php
+
 namespace Clearvox\Asterisk\Dialplan;
 
 use Clearvox\Asterisk\Dialplan\Exception\LineNotFoundAtPriorityException;
@@ -8,10 +9,10 @@ use Clearvox\Asterisk\Dialplan\Line\LineInterface;
  * Main Dialplan Class. Requires a context name for this dialplan and
  * a minimum of a first extension line.
  *
- * @category Clearvox
- * @package Asterisk
+ * @category   Clearvox
+ * @package    Asterisk
  * @subpackage Dialplan
- * @author Leon Rowland <leon@rowland.nl>
+ * @author     Leon Rowland <leon@rowland.nl>
  */
 class Dialplan
 {
@@ -33,11 +34,8 @@ class Dialplan
     /**
      * Make a new Dialplan requiring the first line in the
      * Dialplan.
-     *
-     * @param string $contextName
-     * @param LineInterface $line
      */
-    public function __construct($contextName, LineInterface $line = null)
+    public function __construct(string $contextName, LineInterface $line = null)
     {
         $this->contextName = $contextName;
 
@@ -48,42 +46,36 @@ class Dialplan
 
     /**
      * Get the Context Name for this Dialplan
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->contextName;
     }
 
     /**
      * Override the context name for this dialplan to something new
-     *
-     * @param $contextName
-     * @return $this
      */
-    public function setName($contextName)
+    public function setName(string $contextName): Dialplan
     {
         $this->contextName = $contextName;
+
         return $this;
     }
 
     /**
      * Add a Line to this dialplan.
-     *
-     * @param LineInterface $line
-     * @return $this
      */
-    public function addLine(LineInterface $line)
+    public function addLine(LineInterface $line): Dialplan
     {
         $this->lines[] = $line;
+
         return $this;
     }
 
     /**
      * @return LineInterface[]
      */
-    public function getLines()
+    public function getLines(): array
     {
         return $this->lines;
     }
@@ -92,12 +84,9 @@ class Dialplan
      * Get the line with this pattern, at this specific
      * priority
      *
-     * @throws LineNotFoundAtPriorityException
-     * @param string $pattern
-     * @param string $priority
-     * @return LineInterface
+     *@throws LineNotFoundAtPriorityException
      */
-    public function getLine($pattern, $priority)
+    public function getLine(string $pattern, string $priority): LineInterface
     {
         foreach ($this->lines as $line) {
             if ($line->getPattern() === $pattern && $line->getPriority() == $priority) {
@@ -112,21 +101,16 @@ class Dialplan
      * Determine if this dialplan has a matching pattern. If you want to know if
      * a pattern and a priority exist specifically then pass in the priority
      * number in.
-     *
-     * @param string $pattern
-     * @param null|integer $priority
-     * @return boolean
      */
-    public function hasLine($pattern, $priority = null)
+    public function hasLine(string $pattern, string $priority = null): bool
     {
         foreach ($this->lines as $line) {
             if ($line->getPattern() === $pattern) {
                 if ($priority !== null) {
 
-                    if ($line->getPriority() == $priority) {
+                    if ($line->getPriority() === $priority) {
                         return true;
                     }
-
                 } else {
                     return true;
                 }
@@ -139,11 +123,9 @@ class Dialplan
     /**
      * Remove a line with the matching pattern and priority.
      *
-     * @param string $pattern
-     * @param integer $priority
      * @throws LineNotFoundAtPriorityException
      */
-    public function removeLine($pattern, $priority)
+    public function removeLine(string $pattern, int $priority)
     {
         if (!$this->hasLine($pattern, $priority)) {
             throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
@@ -160,10 +142,8 @@ class Dialplan
 
     /**
      * Remove all lines in this dialplan with this pattern.
-     *
-     * @param string $pattern
      */
-    public function removeLines($pattern)
+    public function removeLines(string $pattern)
     {
         $lines = $this->lines;
 
@@ -177,11 +157,8 @@ class Dialplan
     /**
      * Helper function get the next priority number that can be used in
      * exten lines.
-     *
-     * @param string $pattern
-     * @return int
      */
-    public function getNextPriority($pattern = null)
+    public function getNextPriority(string $pattern = null): int
     {
         if (null === $pattern) {
             return count($this->lines) + 1;
@@ -198,36 +175,32 @@ class Dialplan
     }
 
     /**
-     * Set that this dialplan should extend another dialplan with the same name
-     *
-     * @see https://wiki.asterisk.org/wiki/display/AST/Adding+to+an+existing+section
-     * @param bool $extend
-     * @return $this
-     */
-    public function setExtended($extend)
-    {
-        $this->extended = $extend;
-        return $this;
-    }
-
-    /**
      * Is this dialplan an extended dialplan?
      *
      * @see https://wiki.asterisk.org/wiki/display/AST/Adding+to+an+existing+section
-     * @return bool
      */
-    public function isExtended()
+    public function isExtended(): bool
     {
         return $this->extended;
     }
 
     /**
+     * Set that this dialplan should extend another dialplan with the same name
+     *
+     * @see https://wiki.asterisk.org/wiki/display/AST/Adding+to+an+existing+section
+     */
+    public function setExtended(bool $extend): Dialplan
+    {
+        $this->extended = $extend;
+
+        return $this;
+    }
+
+    /**
      * Turn the complete dialplan into a string, including
      * newline characters.
-     *
-     * @return string
      */
-    public function toString()
+    public function toString(): string
     {
         if ($this->extended) {
             $string = "[{$this->contextName}](+)\n";
@@ -247,5 +220,30 @@ class Dialplan
     public function __toString()
     {
         return $this->toString();
+    }
+
+    public function addLineToTop(LineInterface $receivedLine, string $pattern): Dialplan
+    {
+        $nonEmptyLines = [];
+        $emptyLines    = [];
+
+        foreach ($this->lines as $line) {
+            if (empty($line->toString())) {
+                $emptyLines[] = $line;
+            } else {
+                $nonEmptyLines[] = $line;
+            }
+        }
+
+        // Increase priority for matching lines
+        foreach ($nonEmptyLines as $line) {
+            if ($line->getPattern() === $pattern && is_numeric($line->getPriority())) {
+                $line->setPriority((int) $line->getPriority() + 1);
+            }
+        }
+
+        $this->lines = array_merge($emptyLines, [$receivedLine], $nonEmptyLines);
+
+        return $this;
     }
 }

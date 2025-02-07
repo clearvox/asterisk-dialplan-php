@@ -8,7 +8,7 @@ Simplify your Dialplan building in a clean OOP, tested way.
 Install the latest version with:
 
 ```bash
-$ composer require clearvox/asterisk-dialplan
+composer require clearvox/asterisk-dialplan
 ```
 
 # Requirements

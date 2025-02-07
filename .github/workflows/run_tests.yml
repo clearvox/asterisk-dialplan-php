@@ -1,0 +1,28 @@
+name: Run PHP Tests
+
+on:
+  push:
+    branches:
+      - master  # Run tests when code is pushed to master (e.g., after merging a PR)
+  pull_request:  # Run tests on new PRs to catch issues before merging
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.1'
+          coverage: none  # Disable Xdebug for faster execution
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Run tests
+        run: composer test

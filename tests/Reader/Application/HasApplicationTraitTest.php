@@ -4,20 +4,21 @@ use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Application\UndeterminedApplication;
 use Clearvox\Asterisk\Dialplan\Reader\Application\ApplicationReaderInterface;
 use Clearvox\Asterisk\Dialplan\Reader\Application\HasApplicationTrait;
+use PHPUnit\Framework\TestCase;
 
-class HasApplicationTraitTest extends PHPUnit_Framework_TestCase
+class HasApplicationTraitTest extends TestCase
 {
     public function testFindApplicationWithKnownApplication()
     {
         $hasApplication = $this->getObjectForTrait(HasApplicationTrait::class);
 
-        $noOpApplication = $this->getMock(ApplicationReaderInterface::class);
+        $noOpApplication = $this->createMock(ApplicationReaderInterface::class);
         $noOpApplication
             ->expects($this->once())
             ->method('getMatchFormat')
             ->willReturn('/(NoOp)\((.+)\)/');
 
-        $noOpMock = $this->getMock(ApplicationInterface::class, [], [], '', false);
+        $noOpMock = $this->createMock(ApplicationInterface::class);
         $noOpMock
             ->expects($this->once())
             ->method('getName')

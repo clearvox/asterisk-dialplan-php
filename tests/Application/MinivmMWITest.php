@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\MinivmMWI;
+use PHPUnit\Framework\TestCase;
 
-class MinivmMWITest extends PHPUnit_Framework_TestCase
+class MinivmMWITest extends TestCase
 {
     /**
      * @var MinivmMWI

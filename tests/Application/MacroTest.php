@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Application\Macro;
+use PHPUnit\Framework\TestCase;
 
-class MacroTest extends \PHPUnit_Framework_TestCase
+class MacroTest extends TestCase
 {
     /**
      * @var Macro

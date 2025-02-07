@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\PickupChan;
+use PHPUnit\Framework\TestCase;
 
-class PickupChanTest extends PHPUnit_Framework_TestCase
+class PickupChanTest extends TestCase
 {
     /**
      * @var PickupChan

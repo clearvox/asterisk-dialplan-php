@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\MinivmGreet;
+use PHPUnit\Framework\TestCase;
 
-class MinivmGreetTest extends PHPUnit_Framework_TestCase
+class MinivmGreetTest extends TestCase
 {
     /**
      * @var MinivmGreet

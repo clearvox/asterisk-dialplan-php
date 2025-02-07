@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Read;
+use PHPUnit\Framework\TestCase;
 
-class ReadTest extends PHPUnit_Framework_TestCase
+class ReadTest extends TestCase
 {
     /**
      * @var Read

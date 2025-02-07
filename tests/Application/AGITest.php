@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Application\AGI;
+use PHPUnit\Framework\TestCase;
 
-class AGITest extends \PHPUnit_Framework_TestCase
+class AGITest extends TestCase
 {
     /**
      * @var AGI

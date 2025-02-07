@@ -2,8 +2,9 @@
 
 
 use Clearvox\Asterisk\Dialplan\Application\Set;
+use PHPUnit\Framework\TestCase;
 
-class SetTest extends \PHPUnit_Framework_TestCase
+class SetTest extends TestCase
 {
     public function testGetName()
     {

@@ -21,11 +21,11 @@ class ExtenLine implements LineInterface
     protected $label;
 
     /**
-     * @var \Clearvox\Asterisk\Dialplan\Application\ApplicationInterface
+     * @var ApplicationInterface
      */
     protected $application;
 
-    public function __construct($pattern, $priority, ApplicationInterface $application)
+    public function __construct($pattern, string $priority, ApplicationInterface $application)
     {
         $this->pattern     = $pattern;
         $this->priority    = $priority;
@@ -35,10 +35,8 @@ class ExtenLine implements LineInterface
     /**
      * Get the pattern for this line. There is no guarantee that
      * the response string wouldn't be empty.
-     *
-     * @return string
      */
-    public function getPattern()
+    public function getPattern(): string
     {
         return $this->pattern;
     }
@@ -46,31 +44,28 @@ class ExtenLine implements LineInterface
     /**
      * Get the priority for this line. There is no guarantee that
      * the response string wouldn't be empty.
-     *
-     * @return string
      */
-    public function getPriority()
+    public function getPriority(): ?string
     {
         return $this->priority;
     }
 
+    public function setPriority(string $priority) {
+        $this->priority = $priority;
+    }
+
     /**
      * Get the application associated with this line.
-     *
-     * @return \Clearvox\Asterisk\Dialplan\Application\ApplicationInterface
      */
-    public function getApplication()
+    public function getApplication(): ApplicationInterface
     {
         return $this->application;
     }
 
     /**
      * Set the label for this line.
-     *
-     * @param string $label
-     * @return $this
      */
-    public function setLabel($label)
+    public function setLabel(string $label): ExtenLine
     {
         $this->label = $label;
         return $this;
@@ -78,20 +73,16 @@ class ExtenLine implements LineInterface
 
     /**
      * Get the label set for this line.
-     *
-     * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
 
     /**
      * Turn this implemented Line into a string representation.
-     *
-     * @return string
      */
-    public function toString()
+    public function toString(): string
     {
         $label = '';
 

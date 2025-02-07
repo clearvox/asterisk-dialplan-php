@@ -1,7 +1,8 @@
 <?php
 use Clearvox\Asterisk\Dialplan\Functions\MinivmAccount;
+use PHPUnit\Framework\TestCase;
 
-class MinivmAccountTest extends PHPUnit_Framework_TestCase
+class MinivmAccountTest extends TestCase
 {
     /**
      * @var MinivmAccount

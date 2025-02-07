@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Line\CommentLine;
+use PHPUnit\Framework\TestCase;
 
-class CommentLineTest extends \PHPUnit_Framework_TestCase
+class CommentLineTest extends TestCase
 {
     public function testToString()
     {

@@ -3,8 +3,9 @@
 use Clearvox\Asterisk\Dialplan\Reader\Application\NoOpReader;
 use Clearvox\Asterisk\Dialplan\Reader\Line\ExtenLineReader;
 use Clearvox\Asterisk\Dialplan\Reader\Reader;
+use PHPUnit\Framework\TestCase;
 
-class ReaderTest extends PHPUnit_Framework_TestCase
+class ReaderTest extends TestCase
 {
     /**
      * @var Reader

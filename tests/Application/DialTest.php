@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Dial;
+use PHPUnit\Framework\TestCase;
 
-class DialTest extends \PHPUnit_Framework_TestCase
+class DialTest extends TestCase
 {
     public function testGetNameIsCorrect()
     {

@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Voicemail;
+use PHPUnit\Framework\TestCase;
 
-class VoicemailTest extends PHPUnit_Framework_TestCase
+class VoicemailTest extends TestCase
 {
     /**
      * @var Voicemail

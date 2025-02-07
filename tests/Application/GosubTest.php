@@ -2,7 +2,7 @@
 
 use Clearvox\Asterisk\Dialplan\Application\Gosub;
 
-class GosubTest extends PHPUnit_Framework_TestCase
+class GosubTest extends \PHPUnit\Framework\TestCase
 {
     public $goSub;
 

@@ -2,8 +2,9 @@
 
 use Clearvox\Asterisk\Dialplan\Reader\Reader;
 use Clearvox\Asterisk\Dialplan\Reader\ReaderFactory;
+use PHPUnit\Framework\TestCase;
 
-class ReaderFactoryTest extends PHPUnit_Framework_TestCase
+class ReaderFactoryTest extends TestCase
 {
     public function testCreate()
     {

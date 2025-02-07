@@ -1,8 +1,9 @@
 <?php
 
 use Clearvox\Asterisk\Dialplan\Application\Hangup;
+use PHPUnit\Framework\TestCase;
 
-class HangupTest extends PHPUnit_Framework_TestCase
+class HangupTest extends TestCase
 {
     public function testEmptyToString()
     {
