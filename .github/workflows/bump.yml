@@ -1,0 +1,66 @@
+#https://github.com/marketplace/actions/automated-version-bump
+
+name: "Bump Version"
+
+on:
+  #push:
+  #  branches:
+  #    - "master"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      version-type:
+        type: choice
+        description: ➕ Given a version number MAJOR.MINOR.PATCH, what should we increment (and tag)?
+        options: 
+        - major
+        - minor
+        - patch
+
+jobs:
+  bump-version:
+    name: "Bump Version"
+    runs-on: ubuntu-latest
+    # runs-on: [ self-hosted, tests ]
+
+    env:
+      COMPOSER_DIRECTORY: "./composer.json"
+      COMPOSER_FILE_PATH: ${{env.COMPOSER_DIRECTORY}}/composer.json
+
+    # Map a step output to a job output
+    outputs:
+      newTag: ${{ steps.version-bump.outputs.newTag }}
+
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - name: Dump GitHub context
+        id: github_context_step
+        run: |
+          echo '🔎 GitHub context is:\n${{ toJSON(github) }}'
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: "Checkout source code"
+        uses: "actions/checkout@v4"
+
+      - name: "🔎 check current version in composer.json"
+        run: cat ${{env.COMPOSER_FILE_PATH}}
+
+      - name: "🏷️ Bump Version"
+        id: version-bump
+        uses: "corsi-it/gh-action-bump-composer-version@main"
+        with:
+          tag-prefix: "v"
+          commit-message: "CI: bumps version to {{version}} [skip ci]"
+          version-type: ${{ github.event.inputs.version-type }}
+        env:
+          COMPOSERJSON_DIR: ${{env.COMPOSER_DIRECTORY}}
+
+      - name: "🔎 check new version in composer.json"
+        run: cat ${{env.COMPOSER_FILE_PATH}}
+
+      - name: "🎉 Write new tag"
+        env:
+          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
+        run: echo "new tag $NEW_TAG"
