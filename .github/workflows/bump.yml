@@ -45,7 +45,7 @@ jobs:
         uses: "actions/checkout@v4"
 
       - name: "🔎 check current version in composer.json"
-        run: cat ${{env.COMPOSER_FILE_PATH}}
+        run: cat ${{env.COMPOSER_FILE_PATH}} | grep version
 
       - name: "🏷️ Bump Version"
         id: version-bump
@@ -58,7 +58,7 @@ jobs:
           COMPOSERJSON_DIR: ${{env.COMPOSER_DIRECTORY}}
 
       - name: "🔎 check new version in composer.json"
-        run: cat ${{env.COMPOSER_FILE_PATH}}
+        run: cat ${{env.COMPOSER_FILE_PATH}} | grep version
 
       - name: "🎉 Write new tag"
         env:
