@@ -25,7 +25,8 @@ jobs:
     # runs-on: [ self-hosted, tests ]
 
     env:
-      PACKAGEJSON_DIR: "."
+      COMPOSER_DIRECTORY: "./composer.json"
+      COMPOSER_FILE_PATH: ${{env.COMPOSER_DIRECTORY}}/composer.json
 
     # Map a step output to a job output
     outputs:
@@ -42,28 +43,22 @@ jobs:
 
       - name: "Checkout source code"
         uses: "actions/checkout@v4"
-        with:
-          token: ${{ secrets.TOKEN_WORKAROUND }}
-          ref: ${{ github.ref }}
 
-      - name: "🔎 check current version in package.json"
-        run: cat ${{env.PACKAGEJSON_DIR}}/package.json
+      - name: "🔎 check current version in composer.json"
+        run: cat ${{env.COMPOSER_FILE_PATH}}
 
       - name: "🏷️ Bump Version"
         id: version-bump
-        uses: "phips28/gh-action-bump-version@master"
+        uses: "corsi-it/gh-action-bump-composer-version@main"
         with:
           tag-prefix: "v"
           commit-message: "CI: bumps version to {{version}} [skip ci]"
           version-type: ${{ github.event.inputs.version-type }}
         env:
-          PACKAGEJSON_DIR: ${{env.PACKAGEJSON_DIR}}
-          # TOKEN_WORKAROUND is a personal token, set at organization level, to bypass branch protection rules
-          # this must be also set in actions/checkout@v4 action: https://github.com/phips28/gh-action-bump-version/issues/62
-          GITHUB_TOKEN: ${{ secrets.TOKEN_WORKAROUND }}
+          COMPOSERJSON_DIR: ${{env.COMPOSER_DIRECTORY}}
 
-      - name: "🔎 check new version in package.json"
-        run: cat ${{env.PACKAGEJSON_DIR}}/package.json
+      - name: "🔎 check new version in composer.json"
+        run: cat ${{env.COMPOSER_FILE_PATH}}
 
       - name: "🎉 Write new tag"
         env:
