@@ -25,8 +25,8 @@ jobs:
     # runs-on: [ self-hosted, tests ]
 
     env:
-      COMPOSER_DIRECTORY: "./composer.json"
-      COMPOSER_FILE_PATH: ${{env.COMPOSER_DIRECTORY}}/composer.json
+      COMPOSER_DIRECTORY: "."
+      COMPOSER_FILE_PATH: "${{env.COMPOSER_DIRECTORY}}/composer.json"
 
     # Map a step output to a job output
     outputs:
