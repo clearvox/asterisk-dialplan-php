@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Read;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class ReadTest extends TestCase
      */
     public $read;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->read = new Read('TESTING');
     }

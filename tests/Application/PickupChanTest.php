@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\PickupChan;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class PickupChanTest extends TestCase
      */
     public $pickupChan;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->pickupChan = new PickupChan('SIP/phone1');
     }

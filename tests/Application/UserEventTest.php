@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\UserEvent;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class UserEventTest extends TestCase
      */
     protected $userEvent;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->userEvent = new UserEvent('TestingEvent');
     }

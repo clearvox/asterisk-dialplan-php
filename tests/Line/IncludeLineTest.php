@@ -1,5 +1,7 @@
 <?php
 
+namespace Line;
+
 use Clearvox\Asterisk\Dialplan\Line\IncludeLine;
 use PHPUnit\Framework\TestCase;
 

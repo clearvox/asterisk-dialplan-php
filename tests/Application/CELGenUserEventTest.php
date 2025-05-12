@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\CELGenUserEvent;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class CELGenUserEventTest extends TestCase
      */
     protected $genUserEvent;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->genUserEvent = new CELGenUserEvent('testing');
     }

@@ -148,7 +148,7 @@ class DialplanTest extends TestCase
         $firstMock
             ->expects($this->exactly(2))
             ->method('getPriority')
-            ->willReturn(1);
+            ->willReturn('1');
 
         $dialplan->addLine($firstMock);
 
@@ -203,7 +203,7 @@ class DialplanTest extends TestCase
         $firstMock
             ->expects($this->atLeastOnce())
             ->method('getPriority')
-            ->willReturn(10);
+            ->willReturn('10');
 
         $secondMock = $this->createMock(LineInterface::class);
         $secondMock
@@ -214,7 +214,7 @@ class DialplanTest extends TestCase
         $secondMock
             ->expects($this->atLeastOnce())
             ->method('getPriority')
-            ->willReturn(11);
+            ->willReturn('11');
 
         $dialplan
             ->addLine($firstMock)
@@ -266,7 +266,7 @@ class DialplanTest extends TestCase
         // Mock first line with pattern "100" and priority 1 (supports setPriority)
         $existingLine = $this->createMock(ExtenLine::class);
         $existingLine->method('getPattern')->willReturn('100');
-        $existingLine->method('getPriority')->willReturn(1);
+        $existingLine->method('getPriority')->willReturn('1');
         $existingLine->method('toString')->willReturn('exten => 100,1,Dial(SIP/100)');
         $existingLine->expects($this->once())->method('setPriority')->with("2");
 

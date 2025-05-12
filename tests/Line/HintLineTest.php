@@ -1,5 +1,7 @@
 <?php
 
+namespace Line;
+
 use Clearvox\Asterisk\Dialplan\Line\HintLine;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class HintLineTest extends TestCase
      */
     public $hintLine;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->hintLine = new HintLine('100');
     }

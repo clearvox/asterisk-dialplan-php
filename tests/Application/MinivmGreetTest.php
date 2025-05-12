@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\MinivmGreet;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class MinivmGreetTest extends TestCase
      */
     public $minivmGreet;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->minivmGreet = new MinivmGreet('example@test.com', ['s']);
     }

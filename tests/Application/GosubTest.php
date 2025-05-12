@@ -1,8 +1,11 @@
 <?php
 
-use Clearvox\Asterisk\Dialplan\Application\Gosub;
+namespace Application;
 
-class GosubTest extends \PHPUnit\Framework\TestCase
+use Clearvox\Asterisk\Dialplan\Application\Gosub;
+use PHPUnit\Framework\TestCase;
+
+class GosubTest extends TestCase
 {
     public $goSub;
 

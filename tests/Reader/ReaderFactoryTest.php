@@ -1,5 +1,7 @@
 <?php
 
+namespace Reader;
+
 use Clearvox\Asterisk\Dialplan\Reader\Reader;
 use Clearvox\Asterisk\Dialplan\Reader\ReaderFactory;
 use PHPUnit\Framework\TestCase;

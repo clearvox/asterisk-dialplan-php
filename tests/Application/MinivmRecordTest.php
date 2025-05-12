@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\MinivmRecord;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class MinivmRecordTest extends TestCase
      */
     public $minivmRecord;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->minivmRecord = new MinivmRecord('example@host.com', ['0']);
     }

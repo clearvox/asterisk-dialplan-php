@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\BackGround;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class BackGroundTest extends TestCase
      */
     public $background;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->background = new BackGround('beep');
     }

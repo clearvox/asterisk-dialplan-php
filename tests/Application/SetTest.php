@@ -1,5 +1,6 @@
 <?php
 
+namespace Application;
 
 use Clearvox\Asterisk\Dialplan\Application\Set;
 use PHPUnit\Framework\TestCase;

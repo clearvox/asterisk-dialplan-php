@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Pickup;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class PickupTest extends TestCase
      */
     public $pickup;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->pickup = new Pickup();
     }

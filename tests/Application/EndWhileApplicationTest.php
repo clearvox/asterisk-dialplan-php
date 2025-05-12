@@ -10,7 +10,7 @@ class EndWhileApplicationTest extends TestCase
      */
     public $endWhile;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->endWhile = new EndWhileApplication();
     }

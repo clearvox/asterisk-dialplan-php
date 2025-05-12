@@ -1,4 +1,7 @@
 <?php
+
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\AGI;
 use PHPUnit\Framework\TestCase;
 
@@ -9,7 +12,7 @@ class AGITest extends TestCase
      */
     public $agi;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->agi = new AGI('agi://127.0.0.7:6565/exampleScript');
     }

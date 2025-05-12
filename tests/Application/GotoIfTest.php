@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Go;
 use Clearvox\Asterisk\Dialplan\Application\GotoIf;
 use PHPUnit\Framework\TestCase;
@@ -16,7 +18,7 @@ class GotoIfTest extends TestCase
      */
     public $false;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

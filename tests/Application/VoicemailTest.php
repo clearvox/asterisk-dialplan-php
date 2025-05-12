@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Voicemail;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class VoicemailTest extends TestCase
      */
     public $voicemail;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->voicemail = new Voicemail('100', 'default', ['b', 'u']);
     }
