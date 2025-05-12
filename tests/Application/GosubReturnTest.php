@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\GosubReturn;
 use PHPUnit\Framework\TestCase;
 

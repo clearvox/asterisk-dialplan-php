@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\RemoveQueueMember;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class RemoveQueueMemberTest extends TestCase
      */
     public $removeMember;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->removeMember = new RemoveQueueMember('support');
     }

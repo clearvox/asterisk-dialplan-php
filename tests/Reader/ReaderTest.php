@@ -1,5 +1,7 @@
 <?php
 
+namespace Reader;
+
 use Clearvox\Asterisk\Dialplan\Reader\Application\NoOpReader;
 use Clearvox\Asterisk\Dialplan\Reader\Line\ExtenLineReader;
 use Clearvox\Asterisk\Dialplan\Reader\Reader;
@@ -12,7 +14,7 @@ class ReaderTest extends TestCase
      */
     public $reader;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->reader = new Reader([new ExtenLineReader([new NoOpReader])]);
     }

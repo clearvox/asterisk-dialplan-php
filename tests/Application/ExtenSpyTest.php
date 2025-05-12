@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\ExtenSpy;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class ExtenSpyTest extends TestCase
      */
     public $extenSpy;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->extenSpy = new ExtenSpy('100');
     }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\WhileApplication;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class WhileApplicationTest extends TestCase
      */
     public $while;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->while = new WhileApplication('$[1=1]');
     }

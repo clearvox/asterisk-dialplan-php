@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\ChanSpy;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class ChanSpyTest extends TestCase
      */
     public $chanSpy;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->chanSpy = new ChanSpy();
     }

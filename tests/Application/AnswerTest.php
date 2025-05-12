@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Answer;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class AnswerTest extends TestCase
      */
     protected $answer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->answer = new Answer(100);
     }

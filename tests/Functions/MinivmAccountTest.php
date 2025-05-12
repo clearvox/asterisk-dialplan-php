@@ -1,4 +1,7 @@
 <?php
+
+namespace Functions;
+
 use Clearvox\Asterisk\Dialplan\Functions\MinivmAccount;
 use PHPUnit\Framework\TestCase;
 
@@ -9,7 +12,7 @@ class MinivmAccountTest extends TestCase
      */
     public $minivmAccount;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->minivmAccount = new MinivmAccount('test@example.com');
     }

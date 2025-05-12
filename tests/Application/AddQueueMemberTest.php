@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\AddQueueMember;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class AddQueueMemberTest extends TestCase
      */
     protected $queueMember;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->queueMember = new AddQueueMember('support');
     }

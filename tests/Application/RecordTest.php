@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Record;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class RecordTest extends TestCase
      */
     public $record;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->record = new Record("/tmp/hello-world.wav");
     }

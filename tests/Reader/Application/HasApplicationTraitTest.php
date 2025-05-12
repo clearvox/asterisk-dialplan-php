@@ -1,5 +1,7 @@
 <?php
 
+namespace Reader\Application;
+
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Application\UndeterminedApplication;
 use Clearvox\Asterisk\Dialplan\Reader\Application\ApplicationReaderInterface;

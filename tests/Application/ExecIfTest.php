@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Application\ExecIf;
 use PHPUnit\Framework\TestCase;
@@ -13,7 +15,7 @@ class ExecIfTest extends TestCase
      */
     public $execIf;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $applicationMock = $this->getMock();
 

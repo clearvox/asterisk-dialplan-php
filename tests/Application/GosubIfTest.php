@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Go;
 use Clearvox\Asterisk\Dialplan\Application\GosubIf;
 use PHPUnit\Framework\TestCase;

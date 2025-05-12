@@ -1,4 +1,7 @@
 <?php
+
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Stasis;
 use PHPUnit\Framework\TestCase;
 
@@ -9,7 +12,7 @@ class StasisTest extends TestCase
      */
     public $stasis;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->stasis = new Stasis('authentication');
     }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Playback;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class PlaybackTest extends TestCase
      */
     public $playback;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->playback = new Playback("agent-login");
     }

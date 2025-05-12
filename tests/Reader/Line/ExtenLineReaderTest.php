@@ -1,5 +1,7 @@
 <?php
 
+namespace Reader\Line;
+
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Line\ExtenLine;
 use Clearvox\Asterisk\Dialplan\Reader\Line\ExtenLineReader;

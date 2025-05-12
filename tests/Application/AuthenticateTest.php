@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Authenticate;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class AuthenticateTest extends TestCase
      */
     protected $authenticate;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->authenticate = new Authenticate('1234');
     }

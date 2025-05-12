@@ -1,4 +1,7 @@
 <?php
+
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Macro;
 use PHPUnit\Framework\TestCase;
 
@@ -9,7 +12,7 @@ class MacroTest extends TestCase
      */
     public $macro;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->macro = new Macro('Testing');
     }

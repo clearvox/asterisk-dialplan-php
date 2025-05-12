@@ -1,4 +1,7 @@
 <?php
+
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\WaitExten;
 use PHPUnit\Framework\TestCase;
 
@@ -9,7 +12,7 @@ class WaitExtenTest extends TestCase
      */
     protected $waitExten;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->waitExten = new WaitExten();
     }

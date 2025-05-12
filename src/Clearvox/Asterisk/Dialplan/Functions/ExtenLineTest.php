@@ -1,5 +1,7 @@
 <?php
 
+namespace Clearvox\Asterisk\Dialplan\Functions;
+
 use Clearvox\Asterisk\Dialplan\Application\ApplicationInterface;
 use Clearvox\Asterisk\Dialplan\Line\ExtenLine;
 use PHPUnit\Framework\TestCase;

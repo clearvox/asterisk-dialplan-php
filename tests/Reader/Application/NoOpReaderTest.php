@@ -1,5 +1,7 @@
 <?php
 
+namespace Reader\Application;
+
 use Clearvox\Asterisk\Dialplan\Application\NoOp;
 use Clearvox\Asterisk\Dialplan\Reader\Application\NoOpReader;
 use PHPUnit\Framework\TestCase;

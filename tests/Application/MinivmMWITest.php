@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\MinivmMWI;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class MinivmMWITest extends TestCase
      */
     public $minivmMWI;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->minivmMWI = new MinivmMWI('example@host.com', 0, 1, 2);
     }

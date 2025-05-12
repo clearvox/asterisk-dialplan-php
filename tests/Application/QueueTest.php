@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\Queue;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +12,7 @@ class QueueTest extends TestCase
      */
     public $queue;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->queue = new Queue('testing');
     }

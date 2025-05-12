@@ -1,4 +1,7 @@
 <?php
+
+namespace Application;
+
 use Clearvox\Asterisk\Dialplan\Application\SIPAddHeader;
 use PHPUnit\Framework\TestCase;
 
