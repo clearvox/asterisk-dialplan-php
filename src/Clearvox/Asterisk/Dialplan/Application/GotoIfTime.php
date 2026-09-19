@@ -31,12 +31,12 @@ class GotoIfTime implements ApplicationInterface
     protected $timezone;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $true;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $false;
 
@@ -52,7 +52,7 @@ class GotoIfTime implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getFalse()
     {
@@ -92,7 +92,7 @@ class GotoIfTime implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getTrue()
     {

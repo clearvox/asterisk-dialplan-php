@@ -33,7 +33,7 @@ class HintLine implements LineInterface
      * Get the pattern for this line. There is no guarantee that
      * the response string wouldn't be empty.
      */
-    public function getPattern(): string
+    public function getPattern(): ?string
     {
         return $this->pattern;
     }
