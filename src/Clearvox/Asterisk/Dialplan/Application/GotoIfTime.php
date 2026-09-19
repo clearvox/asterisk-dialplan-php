@@ -40,7 +40,7 @@ class GotoIfTime implements ApplicationInterface
      */
     protected $false;
 
-    public function __construct($times, $weekdays, $mdays, $months, $timezone = null, Go $true = null, Go $false = null)
+    public function __construct($times, $weekdays, $mdays, $months, $timezone = null, ?Go $true = null, ?Go $false = null)
     {
         $this->times    = $times;
         $this->weekdays = $weekdays;

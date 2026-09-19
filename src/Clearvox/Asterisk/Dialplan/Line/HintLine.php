@@ -9,7 +9,7 @@ class HintLine implements LineInterface
 
     protected $peers = array();
 
-    public function __construct(string $pattern = null, array $peers = array())
+    public function __construct(?string $pattern = null, array $peers = array())
     {
         $this->pattern = $pattern;
         $this->peers   = $peers;

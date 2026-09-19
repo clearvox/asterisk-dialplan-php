@@ -23,7 +23,7 @@ class ExecIf implements ApplicationInterface
     public function __construct(
         $expression,
         ApplicationInterface $true,
-        ApplicationInterface $false = null
+        ?ApplicationInterface $false = null
     ) {
         $this->expression = $expression;
         $this->true       = $true;

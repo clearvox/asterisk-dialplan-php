@@ -20,7 +20,7 @@ class GotoIf implements ApplicationInterface
      */
     protected $false;
 
-    public function __construct($condition, Go $true = null, Go $false = null)
+    public function __construct($condition, ?Go $true = null, ?Go $false = null)
     {
         $this->condition = $condition;
         $this->true      = $true;
