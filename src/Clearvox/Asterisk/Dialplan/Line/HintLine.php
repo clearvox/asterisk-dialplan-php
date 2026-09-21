@@ -30,8 +30,8 @@ class HintLine implements LineInterface
     }
 
     /**
-     * Get the pattern for this line. There is no guarantee that
-     * the response string wouldn't be empty.
+     * Get the pattern for this line. Null when this hint was constructed
+     * without one, and no guarantee that the string wouldn't be empty.
      */
     public function getPattern(): ?string
     {
