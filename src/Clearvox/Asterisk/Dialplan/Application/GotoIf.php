@@ -11,16 +11,16 @@ class GotoIf implements ApplicationInterface
     protected $condition;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $true;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $false;
 
-    public function __construct($condition, Go $true = null, Go $false = null)
+    public function __construct($condition, ?Go $true = null, ?Go $false = null)
     {
         $this->condition = $condition;
         $this->true      = $true;
@@ -36,7 +36,7 @@ class GotoIf implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getFalse()
     {
@@ -44,7 +44,7 @@ class GotoIf implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getTrue()
     {

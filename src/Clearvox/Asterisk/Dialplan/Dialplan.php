@@ -35,7 +35,7 @@ class Dialplan
      * Make a new Dialplan requiring the first line in the
      * Dialplan.
      */
-    public function __construct(string $contextName, LineInterface $line = null)
+    public function __construct(string $contextName, ?LineInterface $line = null)
     {
         $this->contextName = $contextName;
 
@@ -102,7 +102,7 @@ class Dialplan
      * a pattern and a priority exist specifically then pass in the priority
      * number in.
      */
-    public function hasLine(string $pattern, string $priority = null): bool
+    public function hasLine(string $pattern, ?string $priority = null): bool
     {
         foreach ($this->lines as $line) {
             if ($line->getPattern() === $pattern) {
@@ -127,7 +127,9 @@ class Dialplan
      */
     public function removeLine(string $pattern, int $priority)
     {
-        if (!$this->hasLine($pattern, $priority)) {
+        // hasLine() compares against LineInterface::getPriority(), which is a string,
+        // so cast rather than leaning on weak-mode coercion of this int parameter.
+        if (!$this->hasLine($pattern, (string) $priority)) {
             throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
         }
 
@@ -158,7 +160,7 @@ class Dialplan
      * Helper function get the next priority number that can be used in
      * exten lines.
      */
-    public function getNextPriority(string $pattern = null): int
+    public function getNextPriority(?string $pattern = null): int
     {
         if (null === $pattern) {
             return count($this->lines) + 1;

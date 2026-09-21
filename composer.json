@@ -1,7 +1,7 @@
 {
     "name": "clearvox/asterisk-dialplan",
     "description": "A PHP Asterisk DialPlan Library",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "minimum-stability": "dev",
     "license": "MIT",
     "authors": [

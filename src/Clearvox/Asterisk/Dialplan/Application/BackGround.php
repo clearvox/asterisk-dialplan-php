@@ -212,9 +212,9 @@ class BackGround implements ApplicationInterface
         return [
             'filename'      => (string)$this->filename,
             'other_files'   => (array)$this->otherFiles,
-            'skip'          => (boolean)$this->skip,
-            'no_answer'     => (boolean)$this->noAnswer,
-            'only_match'    => (boolean)$this->onlyMatch,
+            'skip'          => (bool)$this->skip,
+            'no_answer'     => (bool)$this->noAnswer,
+            'only_match'    => (bool)$this->onlyMatch,
             'lang_override' => (string)$this->lang,
             'context'       => (string)$this->context
         ];

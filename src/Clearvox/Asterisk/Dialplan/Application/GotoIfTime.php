@@ -31,16 +31,16 @@ class GotoIfTime implements ApplicationInterface
     protected $timezone;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $true;
 
     /**
-     * @var Go
+     * @var Go|null
      */
     protected $false;
 
-    public function __construct($times, $weekdays, $mdays, $months, $timezone = null, Go $true = null, Go $false = null)
+    public function __construct($times, $weekdays, $mdays, $months, $timezone = null, ?Go $true = null, ?Go $false = null)
     {
         $this->times    = $times;
         $this->weekdays = $weekdays;
@@ -52,7 +52,7 @@ class GotoIfTime implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getFalse()
     {
@@ -92,7 +92,7 @@ class GotoIfTime implements ApplicationInterface
     }
 
     /**
-     * @return \Clearvox\Asterisk\Dialplan\Application\Go
+     * @return \Clearvox\Asterisk\Dialplan\Application\Go|null
      */
     public function getTrue()
     {
