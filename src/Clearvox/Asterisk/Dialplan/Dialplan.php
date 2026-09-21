@@ -127,7 +127,9 @@ class Dialplan
      */
     public function removeLine(string $pattern, int $priority)
     {
-        if (!$this->hasLine($pattern, $priority)) {
+        // hasLine() compares against LineInterface::getPriority(), which is a string,
+        // so cast rather than leaning on weak-mode coercion of this int parameter.
+        if (!$this->hasLine($pattern, (string) $priority)) {
             throw new LineNotFoundAtPriorityException("Line not found with pattern:$pattern and priority:$priority");
         }
 
